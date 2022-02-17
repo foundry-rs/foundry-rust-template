@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  run-ci:
+  tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -23,3 +23,22 @@ jobs:
       - name: Run forge tests
         working-directory: contracts
         run: forge test
+
+  bindings:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Foundry
+        uses: onbjerg/foundry-toolchain@v1
+        with:
+          version: nightly
+
+      - name: Build contracts before checking bindings are correct
+        working-directory: contracts
+        run: forge build
+
+      - name: Check bindings are correct
+        run: forge bind --bindings-path ./bindings --check --root ./contracts
+
+    # TODO: Add lints once forge fmt is in
