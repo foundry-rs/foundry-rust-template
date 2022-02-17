@@ -1,0 +1,25 @@
+name: Forge Tests
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  run-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Foundry
+        uses: onbjerg/foundry-toolchain@v1
+        with:
+          version: nightly
+
+      - name: Pull library deps
+        working-directory: contracts
+        run: forge update
+
+      - name: Run forge tests
+        working-directory: contracts
+        run: forge test
