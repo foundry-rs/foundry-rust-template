@@ -1,4 +1,4 @@
-name: Forge Tests
+name: Solidity
 on:
   push:
     branches:
