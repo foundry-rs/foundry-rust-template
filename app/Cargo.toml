@@ -8,3 +8,5 @@ edition = "2021"
 [dependencies]
 bindings = { path = "../bindings" }
 ethers = { git = "https://github.com/gakonst/ethers-rs", default-features = false }
+eyre = "0.6.6"
+tokio = { version = "1.17.0", features = ["macros"] }
