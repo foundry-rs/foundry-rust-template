@@ -35,6 +35,12 @@ workflows.
 
 ### Solidity
 
+Forge is using submodules to manage dependencies. Initialize the dependencies:
+
+```bash
+forge install
+```
+
 If you are in the root directory of the project, run:
 
 ```bash
