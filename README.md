@@ -38,7 +38,7 @@ workflows.
 Forge is using submodules to manage dependencies. Initialize the dependencies:
 
 ```bash
-git submodule update --init
+forge install
 ```
 
 If you are in the root directory of the project, run:
