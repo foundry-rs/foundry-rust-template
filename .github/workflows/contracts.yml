@@ -16,9 +16,9 @@ jobs:
         with:
           version: nightly
 
-      - name: Pull library deps
+      - name: Install deps
         working-directory: contracts
-        run: forge update
+        run: forge install
 
       - name: Run forge tests
         working-directory: contracts
@@ -36,13 +36,15 @@ jobs:
 
       - name: Pull library deps
         working-directory: contracts
-        run: forge update
+        run: forge install
+
+      - name: Check fmt
+        working-directory: contracts
+        run: forge fmt --check
 
       - name: Build contracts before checking bindings are correct
         working-directory: contracts
-        run: forge build
+        run: forge build --sizes
 
       - name: Check bindings are correct
         run: forge bind --bindings-path ./bindings --root ./contracts --crate-name bindings
-
-    # TODO: Add lints once forge fmt is in
