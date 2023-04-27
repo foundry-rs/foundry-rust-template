@@ -14,42 +14,53 @@ jobs:
       ETH_RPC_URL: https://eth-mainnet.alchemyapi.io/v2/Lc7oIGYeL_QvInzI0Wiu_pOZZDEKBrdf
     steps:
       - name: Checkout sources
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Install toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          profile: minimal
-          override: true
+        uses: dtolnay/rust-toolchain@stable
 
       - uses: Swatinem/rust-cache@v2
         with:
           cache-on-failure: true
 
       - name: cargo test
-        run: cargo test --all --all-features
+        run: cargo test --workspace --all-features
 
-  lint:
+  clippy:
+    name: clippy
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout sources
-        uses: actions/checkout@v2
-
-      - name: Install toolchain
-        uses: actions-rs/toolchain@v1
+      - uses: actions/checkout@v3
+      - uses: dtolnay/rust-toolchain@nightly
         with:
-          toolchain: nightly
-          profile: minimal
-          components: rustfmt, clippy
-          override: true
+          components: clippy
+      - uses: Swatinem/rust-cache@v2
+      - name: clippy
+        run: cargo clippy --workspace --tests --all-features
+        env:
+          RUSTFLAGS: "-D warnings"
 
-      - uses: Swatinem/rust-cache@v1
+  docs:
+    name: docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dtolnay/rust-toolchain@nightly
         with:
-          cache-on-failure: true
+          components: rust-docs
+      - uses: Swatinem/rust-cache@v2
+      - name: doc
+        run: cargo doc --workspace --all-features --no-deps --document-private-items
+        env:
+          RUSTDOCFLAGS: "-D warnings"
 
-      - name: cargo fmt
-        run: cargo +nightly fmt --all -- --check
-
-      - name: cargo clippy
-        run: cargo +nightly clippy --all --all-features -- -D warnings
+  fmt:
+    name: fmt
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: dtolnay/rust-toolchain@nightly
+        with:
+          components: rustfmt
+      - name: fmt --check
+        run: cargo fmt --all --check
