@@ -9,4 +9,4 @@ edition = "2021"
 bindings = { path = "../bindings" }
 ethers = { version = "2", default-features = false, features = ["rustls"] }
 eyre = "0.6"
-tokio = { version = "1.19", features = ["macros"] }
+tokio = { version = "1.19", features = ["macros", "rt-multi-thread"] }
