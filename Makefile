@@ -5,16 +5,19 @@ default: build
 
 # Define variables
 CARGO=cargo
+CONTRACTS_PATH=./contracts
 BINDINGS_FOLDER=bindings
-BINDINGS_OUT_PATH=./contracts/out/$(BINDINGS_FOLDER)
+BINDINGS_OUT_PATH=$(CONTRACTS_PATH)/out/$(BINDINGS_FOLDER)
 
 # Target for generating bindings
 bindings:
 	# Remove old bindings
 	rm -rf $(BINDINGS_FOLDER)
 	rm -rf $(BINDINGS_OUT_PATH)
+	
 	# Generate new bindings
-	@forge bind --root ./contracts --crate-name $(BINDINGS_FOLDER)
+	@forge bind --root $(CONTRACTS_PATH) --crate-name $(BINDINGS_FOLDER)
+	
 	# Move bindings to the correct location
 	@mv -f $(BINDINGS_OUT_PATH) .
 
@@ -28,10 +31,12 @@ build-release: bindings
 
 # Target for cleaning the project
 clean:
+	forge clean --root $(CONTRACTS_PATH)
 	@$(CARGO) clean
 
 # Target for formatting the code
 fmt:
+	forge fmt --check --root $(CONTRACTS_PATH)
 	@$(CARGO) fmt
 
 
