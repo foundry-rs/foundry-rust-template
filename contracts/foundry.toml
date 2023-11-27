@@ -4,3 +4,5 @@ out = 'out'
 libs = ['lib']
 solidity_version = '0.8.22'
 evm_version = 'shanghai'
+
+# See more config options https://github.com/foundry-rs/foundry/tree/master/config
