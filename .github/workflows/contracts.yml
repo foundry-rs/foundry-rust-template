@@ -47,4 +47,4 @@ jobs:
         run: forge build --sizes
 
       - name: Check bindings are correct
-        run: forge bind --bindings-path ./bindings --root ./contracts --crate-name bindings
+        run: forge bind --bindings-path ./crates/bindings --root ./contracts --crate-name bindings

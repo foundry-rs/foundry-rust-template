@@ -40,6 +40,15 @@ fmt:
 	@forge fmt --check --root $(CONTRACTS_PATH)
 	@$(CARGO) fmt
 
+# Target for running tests
+test:
+	@forge test --root $(CONTRACTS_PATH)
+	@$(CARGO) test
+
+# Target for installing forge dependencies
+setup:
+	@forge install
+
 
 # Declare phony targets
 .PHONY: build build-release clean fmt bindings
