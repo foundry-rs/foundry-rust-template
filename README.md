@@ -67,7 +67,7 @@ first building your contracts:
 
 ```
 forge build --root ./contracts
-forge bind --bindings-path ./bindings --root ./contracts --crate-name bindings
+forge bind --bindings-path ./crates/bindings --root ./contracts --crate-name bindings
 ```
 
 Any follow-on calls to `forge bind` will check that the generated bindings match
