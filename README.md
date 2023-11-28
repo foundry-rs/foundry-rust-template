@@ -19,13 +19,14 @@ Solidity build artifacts.
 
 The project is structured as a mixed Rust workspace with a Foundry project under
 `contracts/` and typesafe auto-generated bindings to the contracts under
-`bindings/`.
+`crates/bindings/`.
 
 ```
 ├── Cargo.toml
 ├── app // <-- Your Rust application logic
 ├── contracts // <- The smart contracts + tests using Foundry
-├── bindings // <-- Generated bindings to the smart contracts' abis (like Typechain)
+├── crates
+    └── bindings // <-- Generated bindings to the smart contracts' abis (like Typechain)
 ```
 
 ## Testing

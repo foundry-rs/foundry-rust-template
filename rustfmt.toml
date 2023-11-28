@@ -6,6 +6,6 @@ imports_granularity = "Crate"
 wrap_comments = true
 comment_width = 100
 # ignore automatically generated bindings
-ignore = ["bindings/"]
+ignore = ["crates/bindings/"]
 
 # See more keys and their definitions at https://rust-lang.github.io/rustfmt
