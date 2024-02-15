@@ -38,9 +38,19 @@ workflows.
 
 Forge is using submodules to manage dependencies. Initialize the dependencies:
 
+If you are in the root directory of the project, run:
+
+```bash
+forge install --root ./contracts
+```
+
+If you are in in `contracts/`:
+
 ```bash
 forge install
 ```
+
+Then, run the tests:
 
 If you are in the root directory of the project, run:
 
