@@ -15,17 +15,17 @@ BINDINGS_OUT_PATH=$(CONTRACTS_PATH)/out/$(BINDINGS_FOLDER)
 bindings:
 	rm -rf $(BINDINGS_CRATES_FOLDER)
 	rm -rf $(BINDINGS_OUT_PATH)
-	
+
 # Generate new bindings
 	@forge bind --root $(CONTRACTS_PATH) --crate-name $(BINDINGS_FOLDER)
-	
+
 # Move bindings to the correct location
 	@mv -f $(BINDINGS_OUT_PATH) $(CRATES_FOLDER)
 
 # Target for building the project
 build: bindings
 	@$(CARGO) build
-	
+
 # Target for building the project in release mode
 build-release: bindings
 	@$(CARGO) build --release
@@ -47,7 +47,7 @@ test:
 
 # Target for installing forge dependencies
 setup:
-	@forge install
+	@forge install --root $(CONTRACTS_PATH)
 
 
 # Declare phony targets
