@@ -1,8 +1,5 @@
 [workspace]
-members = [
-    "app",
-    "crates/bindings",
-]
+members = ["app", "crates/bindings"]
 
 [workspace.dependencies]
-bindings = { path = "crates/bindings" }
+foundry-contracts = { path = "crates/bindings" }
