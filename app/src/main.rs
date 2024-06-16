@@ -1,19 +1,19 @@
-use bindings::counter::Counter;
-
-use ethers::{prelude::Middleware, providers::test_provider::GOERLI, types::Address};
-
+use alloy::{
+    primitives::Address,
+    providers::{builder, Provider},
+};
 use eyre::Result;
-use std::sync::Arc;
+use foundry_contracts::counter::Counter;
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    let provider = GOERLI.provider();
-    let provider = Arc::new(provider);
+    let provider = builder().with_recommended_fillers().on_anvil_with_wallet();
 
     let address = "0x0000000000000000000000000000000000000000".parse::<Address>()?;
 
-    let contract = Counter::new(address, provider);
-    let blk = contract.client().get_block_number().await?;
+    let _contract = Counter::new(address, provider.clone());
+
+    let blk = provider.get_block_number().await?;
     println!("Hello, world! {}", blk);
     Ok(())
 }
