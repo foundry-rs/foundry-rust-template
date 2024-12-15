@@ -6,7 +6,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-foundry-contracts.workspace = true
+bindings.workspace = true
 eyre = "0.6"
 tokio = { version = "1.19", features = ["macros", "rt-multi-thread"] }
 alloy = { git = "https://github.com/alloy-rs/alloy", features = [
