@@ -2,6 +2,7 @@
 out/
 cache/
 Cargo.lock
+broadcast/
 
 compiled/*.wasm
 .docker

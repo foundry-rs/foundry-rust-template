@@ -1,10 +1,14 @@
 #[doc(hidden)]
 #[allow(non_snake_case)]
-pub unsafe fn _export_process_eth_trigger_cabi<T: Guest>(arg0: *mut u8, arg1: usize) -> *mut u8 {
-    #[cfg(target_arch = "wasm32")]
-    _rt::run_ctors_once();
+pub unsafe fn _export_process_eth_trigger_cabi<T: Guest>(
+    arg0: *mut u8,
+    arg1: usize,
+) -> *mut u8 {
+    #[cfg(target_arch = "wasm32")] _rt::run_ctors_once();
     let len0 = arg1;
-    let result1 = T::process_eth_trigger(_rt::Vec::from_raw_parts(arg0.cast(), len0, len0));
+    let result1 = T::process_eth_trigger(
+        _rt::Vec::from_raw_parts(arg0.cast(), len0, len0),
+    );
     let ptr2 = _RET_AREA.0.as_mut_ptr().cast::<u8>();
     match result1 {
         Ok(e) => {

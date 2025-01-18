@@ -1,5 +1,18 @@
 [workspace]
-members = ["app", "crates/bindings"]
+members = [
+    "app",
+    "crates/bindings",
+    "components/*",
+]
+
+[workspace.package]
+edition = "2021"
+version = "0.1.0"
+license = "MIT"
+authors = ["Lay3r Labs Team"]
+repository = "https://github.com/Lay3rLabs/wavs"
+rust-version = "1.80.0"
+
 
 [workspace.dependencies]
 bindings = { path = "crates/bindings" }

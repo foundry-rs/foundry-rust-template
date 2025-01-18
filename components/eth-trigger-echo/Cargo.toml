@@ -22,8 +22,6 @@ lto = true
 [package.metadata.component]
 package = "component:eth-trigger-echo"
 
-# TODO: this is hacky but it works for now. ideally use proper package manager stuff...
-# but I do know wit is very early
 [package.metadata.component.target]
 path = "../../lib/WAVS/wit"
 world = "eth-trigger-world"
