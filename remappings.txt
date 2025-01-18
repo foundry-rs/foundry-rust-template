@@ -1,0 +1,3 @@
+wavs=lib/WAVS/contracts
+@eigenlayer/middleware=lib/WAVS/lib/eigenlayer-middleware/
+@openzeppelin-upgrades/=lib/WAVS/lib/eigenlayer-middleware/lib/openzeppelin-contracts-upgradeable/
