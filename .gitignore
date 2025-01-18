@@ -2,3 +2,7 @@
 out/
 cache/
 Cargo.lock
+
+compiled/*.wasm
+.docker
+wavs-cli.toml
