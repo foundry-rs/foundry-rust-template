@@ -5,7 +5,7 @@ import {ECDSAServiceManagerBase} from "@eigenlayer/middleware/src/unaudited/ECDS
 import {ECDSAStakeRegistry} from "@eigenlayer/middleware/src/unaudited/ECDSAStakeRegistry.sol";
 import {IERC1271Upgradeable} from "@openzeppelin-upgrades/contracts/interfaces/IERC1271Upgradeable.sol";
 import {ECDSAUpgradeable} from "@openzeppelin-upgrades/contracts/utils/cryptography/ECDSAUpgradeable.sol";
-import "@openzeppelin/contracts/utils/Strings.sol";
+// import "@openzeppelin/contracts/utils/Strings.sol";
 import {ILayerTrigger} from "./WavsTrigger.sol";
 import {ILayerServiceManager} from "wavs/interfaces/ILayerServiceManager.sol";
 

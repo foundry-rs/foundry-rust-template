@@ -2,4 +2,7 @@
 members = ["app", "crates/bindings"]
 
 [workspace.dependencies]
-foundry-contracts = { path = "crates/bindings" }
+bindings = { path = "crates/bindings" }
+# must match the bindings Cargo
+alloy = { git = "https://github.com/alloy-rs/alloy", rev = "v0.9.2", features = ["sol-types", "contract"] }
+wit-bindgen-rt = { version = "0.32.0", features = ["bitflags"] }

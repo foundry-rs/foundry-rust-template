@@ -8,19 +8,11 @@ CARGO=cargo
 CRATES_FOLDER=crates
 CONTRACTS_PATH=./contracts
 BINDINGS_FOLDER=bindings
-BINDINGS_CRATES_FOLDER=$(CRATES_FOLDER)/$(BINDINGS_FOLDER)
-BINDINGS_OUT_PATH=$(CONTRACTS_PATH)/out/$(BINDINGS_FOLDER)
 
 # Target for generating bindings
 bindings:
-	rm -rf $(BINDINGS_CRATES_FOLDER)
-	rm -rf $(BINDINGS_OUT_PATH)
-
 # Generate new bindings
-	@forge bind --root $(CONTRACTS_PATH) --crate-name $(BINDINGS_FOLDER)
-
-# Move bindings to the correct location
-	@mv -f $(BINDINGS_OUT_PATH) $(CRATES_FOLDER)
+	@forge bind --bindings-path ./crates/bindings --crate-name $(BINDINGS_FOLDER) --optimize true --alloy --alloy-version v0.9.2 --overwrite
 
 # Target for building the project
 build: bindings
@@ -42,12 +34,12 @@ fmt:
 
 # Target for running tests
 test:
-	@forge test --root $(CONTRACTS_PATH)
+	@forge test
 	@$(CARGO) test
 
 # Target for installing forge dependencies
 setup:
-	@forge install --root $(CONTRACTS_PATH)
+	@forge install
 
 
 # Declare phony targets
